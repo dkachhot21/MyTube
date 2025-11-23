@@ -1,0 +1,51 @@
+.video-card {
+  width: 300px;
+  margin-bottom: 40px;
+}
+
+.video-card__thumbnail {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.video-card__thumbnail-container {
+  position: relative;
+  display: block;
+}
+
+.video-card__duration {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 3px 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.video-card__info {
+  display: flex;
+  margin-top: 10px;
+}
+
+.video-card__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.video-card__text h4 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 4px 0;
+  color: #fff;
+}
+
+.video-card__text p {
+  font-size: 14px;
+  color: #aaa;
+  margin: 0;
+}

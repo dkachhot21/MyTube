@@ -1,0 +1,34 @@
+.sidebar {
+  background-color: #212121;
+  width: 240px;
+  padding: 20px 0;
+  color: #fff;
+  height: calc(100vh - 61px);
+  position: sticky;
+  top: 61px;
+  overflow-y: auto;
+}
+
+.sidebar__item {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar__item:hover {
+  background-color: #383838;
+}
+
+.sidebar__item .fas {
+  margin-right: 20px;
+}
+
+.sidebar hr {
+  height: 1px;
+  border: 0;
+  background-color: #383838;
+  margin: 10px 0;
+}

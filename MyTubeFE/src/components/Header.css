@@ -1,0 +1,167 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #202020;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.header__logo {
+  color: #ff0000;
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.header__logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.header__center {
+  flex: 0.5;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+}
+
+.header__center form {
+  display: flex;
+  flex: 1;
+  background-color: #121212;
+  border: 1px solid #303030;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-left: 40px;
+}
+
+.header__center input {
+  flex: 1;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: transparent;
+  color: white;
+}
+
+.header__center input:focus {
+  outline: none;
+  border-color: #1c62b9;
+}
+
+.header__center button {
+  background-color: #303030;
+  border: none;
+  border-left: 1px solid #303030;
+  padding: 8px 20px;
+  color: #aaa;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.header__center button:hover {
+  background-color: #404040;
+  color: white;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: white;
+}
+
+.header__right i {
+  font-size: 20px;
+  cursor: pointer;
+  color: #aaa;
+  transition: color 0.2s;
+}
+
+.header__right i:hover {
+  color: white;
+}
+
+.header__auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.header__login-btn,
+.header__register-btn {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 18px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.header__login-btn {
+  color: #3ea6ff;
+  border: 1px solid #3ea6ff;
+}
+
+.header__login-btn:hover {
+  background-color: rgba(62, 166, 255, 0.1);
+}
+
+.header__register-btn {
+  background-color: #3ea6ff;
+  color: black;
+  border: 1px solid #3ea6ff;
+}
+
+.header__register-btn:hover {
+  background-color: #65b8ff;
+  border-color: #65b8ff;
+}
+
+.header__greeting {
+  font-weight: 500;
+  color: white;
+  margin-right: 10px;
+}
+
+.header__logout-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.header__logout-btn:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.header__account-link {
+  text-decoration: none;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.header__account-link:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}

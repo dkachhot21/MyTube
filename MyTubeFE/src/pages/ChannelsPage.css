@@ -1,0 +1,64 @@
+.channels-page {
+    padding: 20px 40px;
+}
+
+.channels-page h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.channels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.channel-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px;
+    background-color: #212121;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.channel-card:hover {
+    background-color: #303030;
+}
+
+.channel-card__avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.channel-card__name {
+    flex: 1;
+}
+
+.channel-card h3 {
+    font-size: 16px;
+    margin: 0;
+    word-break: break-word;
+}
+
+.no-channels {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    color: #aaa;
+}
