@@ -16,7 +16,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173', 'https://dkachhot21.github.io'],
     credentials: true,
     exposedHeaders: ['Authorization']
 }));
