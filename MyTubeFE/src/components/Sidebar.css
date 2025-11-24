@@ -88,12 +88,11 @@
   }
 
   /* Hide items that don't fit well in bottom nav */
-  .sidebar__item:nth-child(4),
+  /* .sidebar__item:nth-child(4), */
   /* Library (div) */
   /* Hide other links if necessary, but keep History */
   /* .sidebar__link[href="/settings"], */
-  .sidebar__link[href="/account"] {
-    /* Optional: Hide less important links on mobile if space is tight */
-    display: none;
-  }
+  /* .sidebar__link[href="/account"] { */
+  /* display: none; */
+  /* } */
 }
