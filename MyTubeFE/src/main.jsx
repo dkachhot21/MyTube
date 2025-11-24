@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import App from './App.jsx';
@@ -18,7 +18,7 @@ import HistoryPage from './pages/HistoryPage.jsx';
 
 import ManageAccountPage from './pages/ManageAccountPage.jsx';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/login',
     element: (
