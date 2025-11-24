@@ -29,11 +29,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: MyTubeFE/package-lock.json
       
       - name: Install dependencies
-        run: cd MyTubeFE && npm ci
+        run: cd MyTubeFE && npm install
       
       - name: Build frontend
         run: cd MyTubeFE && npm run build
