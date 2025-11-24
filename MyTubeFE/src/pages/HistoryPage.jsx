@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getHistory } from '../services/api';
 import VideoCard from '../components/VideoCard';
+import { formatDuration } from '../utils/format';
 import './HistoryPage.css';
 
 const HistoryPage = () => {
@@ -23,7 +24,7 @@ const HistoryPage = () => {
                     title: item.title || item.file_name,
                     thumbnail: `${item.url}=w800-h600-no`,
                     channel: item.album_name || 'Unknown Channel',
-                    duration: item.duration_ms ? new Date(Number(item.duration_ms)).toISOString().substr(14, 5) : '00:00',
+                    duration: formatDuration(Number(item.duration_ms)),
                     timestamp: new Date(item.last_watched).toLocaleString(),
                     views: 'Watched'
                 }));

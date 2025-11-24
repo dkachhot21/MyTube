@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import VideoCard from '../components/VideoCard';
 import { searchMedia } from '../services/api';
+import { formatDuration } from '../utils/format';
 import './SearchPage.css';
 
 const SearchPage = () => {
@@ -22,7 +23,7 @@ const SearchPage = () => {
                     channel: item.album_name || item.album_id || 'Unknown Channel',
                     channelAvatar: 'https://via.placeholder.com/40x40.png?text=Ch',
                     timestamp: new Date(Number(item.timestamp_taken)).toLocaleString(),
-                    duration: new Date(Number(item.duration_ms)).toISOString().substr(14, 5),
+                    duration: formatDuration(Number(item.duration_ms)),
                     season: item.season,
                     episode: item.episode,
                 }));

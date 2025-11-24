@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import RelatedVideoCard from '../components/RelatedVideoCard';
 import { getMediaById, getStreamUrl, getMediaByStars, getMediaByAlbum } from '../services/api';
+import { formatDuration } from '../utils/format';
 import './PlayPage.css';
 
 const PlayPage = () => {
@@ -27,6 +28,7 @@ const PlayPage = () => {
           stars: data.stars || [],
           views: '0', // Placeholder
           timestamp: new Date(Number(data.timestamp_taken)).toLocaleString(),
+          duration: formatDuration(Number(data.duration_ms)),
           season: data.season,
           episode: data.episode,
         });

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import VideoCard from '../components/VideoCard';
 import { getAllMedia } from '../services/api';
 import './HomePage.css';
+import { formatDuration } from '../utils/format';
 
 const HomePage = () => {
   const [videos, setVideos] = useState([]);
@@ -37,12 +38,12 @@ const HomePage = () => {
       const mappedVideos = data.map((item) => ({
         id: item.internal_id,
         title: item.title || item.file_name,
-        thumbnail: `${item.url}=w800-h600-no`,
+        thumbnail: `${item.url}=w800 - h600 - no`,
         channel: item.album_name || item.album_id || 'Unknown Channel',
         channelAvatar: 'https://via.placeholder.com/40x40.png?text=Ch',
         views: '0', // Placeholder
         timestamp: new Date(Number(item.timestamp_taken)).toLocaleString(),
-        duration: new Date(Number(item.duration_ms)).toISOString().substr(14, 5),
+        duration: formatDuration(Number(item.duration_ms)),
         season: item.season,
         episode: item.episode,
         timestampRaw: Number(item.timestamp_taken),
