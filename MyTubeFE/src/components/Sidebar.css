@@ -32,3 +32,66 @@
   background-color: #383838;
   margin: 10px 0;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 70px;
+  }
+
+  .sidebar__item {
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px 0;
+    text-align: center;
+  }
+
+  .sidebar__item .fas {
+    margin-right: 0;
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
+
+  .sidebar__item span {
+    font-size: 10px;
+  }
+
+  .sidebar hr {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    display: flex;
+    justify-content: space-around;
+    z-index: 1000;
+    padding: 8px 0;
+    border-top: 1px solid #383838;
+    background-color: #212121;
+    /* Ensure background is opaque */
+  }
+
+  .sidebar__item {
+    padding: 5px;
+    flex: 1;
+  }
+
+  .sidebar__item .fas {
+    font-size: 18px;
+    margin-bottom: 2px;
+  }
+
+  /* Hide items that don't fit well in bottom nav */
+  .sidebar__item:nth-child(4),
+  /* Library (div) */
+  .sidebar__item:nth-child(6) {
+    /* Watch later (div) */
+    display: none;
+  }
+}

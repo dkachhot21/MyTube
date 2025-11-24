@@ -1,5 +1,6 @@
 .app__page {
   display: flex;
+  height: 100%;
 }
 
 .app__main {
@@ -7,4 +8,19 @@
   padding: 20px;
   background-color: #181818;
   min-height: calc(100vh - 61px);
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .app__main {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .app__main {
+    margin-bottom: 70px;
+    /* Space for bottom nav */
+    padding: 10px 5px;
+  }
 }

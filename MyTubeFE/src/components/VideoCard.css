@@ -1,6 +1,7 @@
 .video-card {
-  width: 300px;
-  margin-bottom: 40px;
+  width: 100%;
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .video-card__thumbnail {

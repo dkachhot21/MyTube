@@ -12,6 +12,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 a {
   color: #3ea6ff;
   text-decoration: none;
