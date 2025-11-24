@@ -38,7 +38,7 @@ const HomePage = () => {
       const mappedVideos = data.map((item) => ({
         id: item.internal_id,
         title: item.title || item.file_name,
-        thumbnail: `${item.url}=w800 - h600 - no`,
+        thumbnail: `${item.url}=w800-h600-no`,
         channel: item.album_name || item.album_id || 'Unknown Channel',
         channelAvatar: 'https://via.placeholder.com/40x40.png?text=Ch',
         views: '0', // Placeholder
