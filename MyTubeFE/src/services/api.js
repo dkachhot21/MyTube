@@ -1,4 +1,7 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8999';
+// Auto-detect environment: use Render URL on GitHub Pages, localhost for local dev
+const API_BASE_URL = window.location.hostname.includes('github.io')
+    ? 'https://mytube-fndm.onrender.com'
+    : (import.meta.env.VITE_API_URL || 'http://localhost:8999');
 
 const getHeaders = () => {
     const token = localStorage.getItem('token');
