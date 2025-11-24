@@ -17,11 +17,6 @@ const Sidebar = () => {
         <i className="fas fa-video"></i>
         <span>Channels</span>
       </Link>
-      <hr />
-      <div className="sidebar__item">
-        <i className="fas fa-folder"></i>
-        <span>Library</span>
-      </div>
       <Link to="/history" className="sidebar__item">
         <i className="fas fa-history"></i>
         <span>History</span>

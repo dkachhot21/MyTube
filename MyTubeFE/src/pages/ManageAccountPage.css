@@ -1,35 +1,70 @@
 .manage-account-page {
     padding: 2rem;
-    color: white;
-    display: flex;
-    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #e0e0e0;
 }
 
-.manage-container {
-    background-color: #202020;
-    padding: 2rem;
+.manage-account-page h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 1rem;
+}
+
+.account-section {
+    background-color: #1a1a1a;
     border-radius: 8px;
-    width: 100%;
-    max-width: 800px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.manage-container h2 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+.account-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
 }
 
-.description {
+.account-section .description {
     color: #aaa;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #ccc;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #cc0000;
 }
 
 .rows-container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .input-row {
@@ -40,152 +75,82 @@
 
 .url-input {
     flex: 2;
-    padding: 10px;
-    background-color: #121212;
-    border: 1px solid #303030;
+    padding: 0.75rem;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
     border-radius: 4px;
-    color: white;
+    color: #fff;
 }
 
 .name-input {
     flex: 1;
-    padding: 10px;
-    background-color: #121212;
-    border: 1px solid #303030;
+    padding: 0.75rem;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
     border-radius: 4px;
-    color: white;
-}
-
-.url-input:focus,
-.name-input:focus {
-    outline: none;
-    border-color: #3ea6ff;
-}
-
-.remove-btn {
-    background: none;
-    border: none;
-    color: #aaa;
-    cursor: pointer;
-    padding: 8px;
-    font-size: 1.1rem;
-    transition: color 0.2s;
-}
-
-.remove-btn:hover {
-    color: #ff4e45;
-    background: none;
+    color: #fff;
 }
 
 .actions {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.add-row-btn {
-    background-color: #303030;
-    color: white;
-    border: 1px solid #303030;
-    padding: 10px 20px;
-    border-radius: 4px;
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 8px;
+    margin-top: 1rem;
 }
 
-.add-row-btn:hover {
-    background-color: #404040;
-}
-
-.update-btn {
-    background-color: #3ea6ff;
-    color: black;
+.btn-primary,
+.btn-secondary,
+.btn-danger,
+.update-btn,
+.save-btn,
+.add-row-btn,
+.clear-history-btn {
+    padding: 0.75rem 1.5rem;
     border: none;
-    padding: 10px 24px;
     border-radius: 4px;
-    font-weight: 500;
-    margin-left: auto;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
-.update-btn:hover {
-    background-color: #65b8ff;
+.update-btn,
+.save-btn,
+.btn-primary {
+    background-color: #cc0000;
+    color: white;
 }
 
-.update-btn:disabled {
+.update-btn:hover,
+.save-btn:hover,
+.btn-primary:hover {
+    background-color: #aa0000;
+}
+
+.add-row-btn,
+.btn-secondary {
+    background-color: #444;
+    color: white;
+}
+
+.add-row-btn:hover,
+.btn-secondary:hover {
     background-color: #555;
-    color: #888;
-    cursor: not-allowed;
 }
 
-.status-message {
-    padding: 1rem;
-    border-radius: 4px;
-    text-align: center;
-}
-
-.manage-account-page {
-    padding: 2rem;
-    color: white;
-    display: flex;
-    justify-content: center;
-}
-
-.manage-container {
-    background-color: #202020;
-    padding: 2rem;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 800px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.manage-container h2 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-.description {
-    color: #aaa;
-    margin-bottom: 2rem;
-}
-
-.rows-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.input-row {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.url-input {
-    flex: 2;
-    padding: 10px;
-    background-color: #121212;
-    border: 1px solid #303030;
-    border-radius: 4px;
+.clear-history-btn,
+.btn-danger {
+    background-color: #dc3545;
     color: white;
 }
 
-.name-input {
-    flex: 1;
-    padding: 10px;
-    background-color: #121212;
-    border: 1px solid #303030;
-    border-radius: 4px;
-    color: white;
-}
-
-.url-input:focus,
-.name-input:focus {
-    outline: none;
-    border-color: #3ea6ff;
+.clear-history-btn:hover,
+.btn-danger:hover {
+    background-color: #c82333;
 }
 
 .remove-btn {
@@ -193,266 +158,20 @@
     border: none;
     color: #aaa;
     cursor: pointer;
-    padding: 8px;
-    font-size: 1.1rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
     transition: color 0.2s;
 }
 
 .remove-btn:hover {
     color: #ff4e45;
-    background: none;
-}
-
-.actions {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.add-row-btn {
-    background-color: #303030;
-    color: white;
-    border: 1px solid #303030;
-    padding: 10px 20px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.add-row-btn:hover {
-    background-color: #404040;
-}
-
-.update-btn {
-    background-color: #3ea6ff;
-    color: black;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 4px;
-    font-weight: 500;
-    margin-left: 10px;
-}
-
-.save-btn {
-    background-color: #303030;
-    color: white;
-    border: 1px solid #303030;
-    padding: 10px 24px;
-    border-radius: 4px;
-    font-weight: 500;
-    margin-left: auto;
-}
-
-.save-btn:hover {
-    background-color: #404040;
-}
-
-.save-btn:disabled {
-    background-color: #252525;
-    color: #555;
-    cursor: not-allowed;
 }
 
 .status-message {
     padding: 1rem;
     border-radius: 4px;
     text-align: center;
-}
-
-.status-message.success {
-    cursor: pointer;
-    padding: 8px;
-    font-size: 1.1rem;
-    transition: color 0.2s;
-}
-
-.remove-btn:hover {
-    color: #ff4e45;
-    background: none;
-}
-
-.actions {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.add-row-btn {
-    background-color: #303030;
-    color: white;
-    border: 1px solid #303030;
-    padding: 10px 20px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.add-row-btn:hover {
-    background-color: #404040;
-}
-
-.update-btn {
-    background-color: #3ea6ff;
-    color: black;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 4px;
-    font-weight: 500;
-    margin-left: auto;
-}
-
-.update-btn:hover {
-    background-color: #65b8ff;
-}
-
-.update-btn:disabled {
-    background-color: #555;
-    color: #888;
-    cursor: not-allowed;
-}
-
-.status-message {
-    padding: 1rem;
-    border-radius: 4px;
-    text-align: center;
-}
-
-.manage-account-page {
-    padding: 2rem;
-    color: white;
-    display: flex;
-    justify-content: center;
-}
-
-.manage-container {
-    background-color: #202020;
-    padding: 2rem;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 800px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.manage-container h2 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-.description {
-    color: #aaa;
-    margin-bottom: 2rem;
-}
-
-.rows-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.input-row {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.url-input {
-    flex: 2;
-    padding: 10px;
-    background-color: #121212;
-    border: 1px solid #303030;
-    border-radius: 4px;
-    color: white;
-}
-
-.name-input {
-    flex: 1;
-    padding: 10px;
-    background-color: #121212;
-    border: 1px solid #303030;
-    border-radius: 4px;
-    color: white;
-}
-
-.url-input:focus,
-.name-input:focus {
-    outline: none;
-    border-color: #3ea6ff;
-}
-
-.remove-btn {
-    background: none;
-    border: none;
-    color: #aaa;
-    cursor: pointer;
-    padding: 8px;
-    font-size: 1.1rem;
-    transition: color 0.2s;
-}
-
-.remove-btn:hover {
-    color: #ff4e45;
-    background: none;
-}
-
-.actions {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.add-row-btn {
-    background-color: #303030;
-    color: white;
-    border: 1px solid #303030;
-    padding: 10px 20px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.add-row-btn:hover {
-    background-color: #404040;
-}
-
-.update-btn {
-    background-color: #3ea6ff;
-    color: black;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 4px;
-    font-weight: 500;
-    margin-left: 10px;
-}
-
-.save-btn {
-    background-color: #303030;
-    color: white;
-    border: 1px solid #303030;
-    padding: 10px 24px;
-    border-radius: 4px;
-    font-weight: 500;
-    margin-left: auto;
-}
-
-.save-btn:hover {
-    background-color: #404040;
-}
-
-.save-btn:disabled {
-    background-color: #252525;
-    color: #555;
-    cursor: not-allowed;
-}
-
-.status-message {
-    padding: 1rem;
-    border-radius: 4px;
-    text-align: center;
+    margin-top: 1rem;
 }
 
 .status-message.success {
@@ -467,24 +186,31 @@
     border: 1px solid rgba(198, 40, 40, 0.3);
 }
 
-.clear-history-btn {
-    background-color: #d32f2f;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.clear-history-btn:hover {
-    background-color: #c62828;
-}
-
-.clear-history-btn:disabled {
-    background-color: #555;
-    color: #888;
+button:disabled {
+    opacity: 0.6;
     cursor: not-allowed;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .manage-account-page {
+        padding: 1rem;
+    }
+
+    .manage-account-page h2 {
+        font-size: 1.5rem;
+    }
+
+    .account-section {
+        padding: 1rem;
+    }
+
+    .input-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .remove-btn {
+        align-self: flex-end;
+    }
 }
