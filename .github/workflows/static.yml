@@ -36,7 +36,7 @@ jobs:
       - name: Build frontend
         run: cd MyTubeFE && npm run build
         env:
-          VITE_API_URL: https://your-backend-url.onrender.com
+          VITE_API_URL: https://mytube-fndm.onrender.com
       
       - name: Setup Pages
         uses: actions/configure-pages@v5
