@@ -1,11 +1,57 @@
-// Auto-detect environment: use Render URL on GitHub Pages, localhost for local dev
-const API_BASE_URL = window.location.hostname.includes('github.io')
-    ? 'https://mytube-fndm.onrender.com'
-    : (import.meta.env.VITE_API_URL || 'http://localhost:8999');
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8999';
 
 const getHeaders = () => {
     const token = localStorage.getItem('token');
     return token ? { 'Authorization': `Bearer ${token}` } : {};
+};
+
+// Auth API functions
+export const loginUser = async (email, password) => {
+    const response = await fetch(`${API_BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error || 'Login failed');
+    }
+
+    return data;
+};
+
+export const registerUser = async (username, email, password) => {
+    const response = await fetch(`${API_BASE_URL}/auth/register`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, email, password })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error || 'Registration failed');
+    }
+
+    return data;
+};
+
+export const getCurrentUser = async () => {
+    const response = await fetch(`${API_BASE_URL}/auth/me`, {
+        headers: getHeaders()
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to get current user');
+    }
+
+    return await response.json();
 };
 
 export const getAllMedia = async (page = 1, limit = 20, sortBy = 'timestamp_taken', sortOrder = 'DESC') => {

@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import { loginUser, registerUser, getCurrentUser } from '../services/api';
 
 const AuthContext = createContext(null);
 
@@ -11,19 +12,8 @@ export const AuthProvider = ({ children }) => {
         const initAuth = async () => {
             if (token) {
                 try {
-                    const response = await fetch('http://localhost:8999/auth/me', {
-                        headers: {
-                            'Authorization': `Bearer ${token}`
-                        }
-                    });
-
-                    if (response.ok) {
-                        const userData = await response.json();
-                        setUser(userData);
-                    } else {
-                        // Token invalid or expired
-                        logout();
-                    }
+                    const userData = await getCurrentUser();
+                    setUser(userData);
                 } catch (error) {
                     console.error('Auth initialization error:', error);
                     logout();
@@ -37,20 +27,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const response = await fetch('http://localhost:8999/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.error || 'Login failed');
-            }
-
+            const data = await loginUser(email, password);
             setToken(data.token);
             setUser(data.user);
             localStorage.setItem('token', data.token);
@@ -62,20 +39,7 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (username, email, password) => {
         try {
-            const response = await fetch('http://localhost:8999/auth/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, email, password })
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.error || 'Registration failed');
-            }
-
+            const data = await registerUser(username, email, password);
             setToken(data.token);
             setUser(data.user);
             localStorage.setItem('token', data.token);
