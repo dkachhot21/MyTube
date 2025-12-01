@@ -122,7 +122,7 @@ const PlayPage = () => {
   return (
     <div className="play-page">
       <div className="play-page__main">
-        <div className="video-player">
+        <div className="video-player" style={video.isPhoto ? { paddingTop: '0', height: 'auto' } : {}}>
           {video.isPhoto ? (
             <img
               src={video.src}
