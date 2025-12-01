@@ -7,7 +7,9 @@ const VideoCard = ({ video }) => {
     <div className="video-card">
       <Link to={`/play/${video.id}`} className="video-card__thumbnail-container">
         <img className="video-card__thumbnail" src={video.thumbnail} alt={video.title} />
-        <span className="video-card__duration">{video.duration}</span>
+        {video.duration !== '00:00' && (
+          <span className="video-card__duration">{video.duration}</span>
+        )}
       </Link>
       <div className="video-card__info">
         <div className="video-card__avatar-initials" style={{

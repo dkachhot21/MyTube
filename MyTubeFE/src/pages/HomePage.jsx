@@ -10,6 +10,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [sortBy, setSortBy] = useState('date-desc');
+  const [filterType, setFilterType] = useState('all');
 
   // Convert frontend sort values to backend format
   const getSortParams = (sortType) => {
@@ -30,7 +31,7 @@ const HomePage = () => {
 
     setLoading(true);
     const { sortBy: dbSortBy, sortOrder } = getSortParams(sortBy);
-    const data = await getAllMedia(currentPage, 20, dbSortBy, sortOrder);
+    const data = await getAllMedia(currentPage, 20, dbSortBy, sortOrder, filterType);
 
     if (data.length === 0) {
       setHasMore(false);
@@ -69,12 +70,12 @@ const HomePage = () => {
     fetchVideos(page, false);
   }, [page]);
 
-  // Reset and fetch when sort changes
+  // Reset and fetch when sort or filter changes
   useEffect(() => {
     setPage(1);
     setHasMore(true);
     fetchVideos(1, true);
-  }, [sortBy]);
+  }, [sortBy, filterType]);
 
   const handleLoadMore = () => {
     setPage((prev) => prev + 1);
@@ -84,16 +85,38 @@ const HomePage = () => {
     <div className="home-page">
       <div className="home-page__header">
         <h2>Home</h2>
-        <div className="home-page__sort">
-          <label htmlFor="sort">Sort by: </label>
-          <select id="sort" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-            <option value="date-desc">Date (Newest)</option>
-            <option value="date-asc">Date (Oldest)</option>
-            <option value="title-asc">Title (A-Z)</option>
-            <option value="title-desc">Title (Z-A)</option>
-            <option value="duration-asc">Duration (Shortest)</option>
-            <option value="duration-desc">Duration (Longest)</option>
-          </select>
+        <div className="home-page__controls">
+          <div className="home-page__filter">
+            <button
+              className={`filter-btn ${filterType === 'all' ? 'active' : ''}`}
+              onClick={() => setFilterType('all')}
+            >
+              All
+            </button>
+            <button
+              className={`filter-btn ${filterType === 'video' ? 'active' : ''}`}
+              onClick={() => setFilterType('video')}
+            >
+              Videos
+            </button>
+            <button
+              className={`filter-btn ${filterType === 'photo' ? 'active' : ''}`}
+              onClick={() => setFilterType('photo')}
+            >
+              Photos
+            </button>
+          </div>
+          <div className="home-page__sort">
+            <label htmlFor="sort">Sort by: </label>
+            <select id="sort" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+              <option value="date-desc">Date (Newest)</option>
+              <option value="date-asc">Date (Oldest)</option>
+              <option value="title-asc">Title (A-Z)</option>
+              <option value="title-desc">Title (Z-A)</option>
+              <option value="duration-asc">Duration (Shortest)</option>
+              <option value="duration-desc">Duration (Longest)</option>
+            </select>
+          </div>
         </div>
       </div>
       <div className="video-grid">

@@ -7,11 +7,48 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .home-page__header h2 {
   margin: 0;
   color: #fff;
+}
+
+.home-page__controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.home-page__filter {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-btn {
+  padding: 6px 12px;
+  background-color: #303030;
+  border: 1px solid #444;
+  border-radius: 16px;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  background-color: #404040;
+  color: white;
+}
+
+.filter-btn.active {
+  background-color: #fff;
+  color: #000;
+  border-color: #fff;
+  font-weight: 500;
 }
 
 .home-page__sort {

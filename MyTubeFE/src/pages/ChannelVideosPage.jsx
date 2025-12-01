@@ -12,6 +12,7 @@ const ChannelVideosPage = () => {
     const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true);
     const [sortBy, setSortBy] = useState('date-desc');
+    const [filterType, setFilterType] = useState('all');
 
     // Convert frontend sort values to backend format
     const getSortParams = (sortType) => {
@@ -33,7 +34,7 @@ const ChannelVideosPage = () => {
 
         setLoading(true);
         const { sortBy: dbSortBy, sortOrder } = getSortParams(sortBy);
-        const data = await getMediaByAlbum(name, currentPage, 20, dbSortBy, sortOrder);
+        const data = await getMediaByAlbum(name, currentPage, 20, dbSortBy, sortOrder, filterType);
 
         if (data.length === 0) {
             setHasMore(false);
@@ -66,12 +67,12 @@ const ChannelVideosPage = () => {
         fetchVideos(page, false);
     }, [page, name]);
 
-    // Reset and fetch when sort changes
+    // Reset and fetch when sort or filter changes
     useEffect(() => {
         setPage(1);
         setHasMore(true);
         fetchVideos(1, true);
-    }, [sortBy]);
+    }, [sortBy, filterType]);
 
     const handleLoadMore = () => {
         setPage((prev) => prev + 1);
@@ -81,16 +82,38 @@ const ChannelVideosPage = () => {
         <div className="channel-videos-page">
             <div className="channel-videos-page__header">
                 <h2>Videos from {name}</h2>
-                <div className="channel-videos-page__sort">
-                    <label htmlFor="sort">Sort by: </label>
-                    <select id="sort" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                        <option value="date-desc">Date (Newest)</option>
-                        <option value="date-asc">Date (Oldest)</option>
-                        <option value="title-asc">Title (A-Z)</option>
-                        <option value="title-desc">Title (Z-A)</option>
-                        <option value="duration-asc">Duration (Shortest)</option>
-                        <option value="duration-desc">Duration (Longest)</option>
-                    </select>
+                <div className="channel-videos-page__controls">
+                    <div className="channel-videos-page__filter">
+                        <button
+                            className={`filter-btn ${filterType === 'all' ? 'active' : ''}`}
+                            onClick={() => setFilterType('all')}
+                        >
+                            All
+                        </button>
+                        <button
+                            className={`filter-btn ${filterType === 'video' ? 'active' : ''}`}
+                            onClick={() => setFilterType('video')}
+                        >
+                            Videos
+                        </button>
+                        <button
+                            className={`filter-btn ${filterType === 'photo' ? 'active' : ''}`}
+                            onClick={() => setFilterType('photo')}
+                        >
+                            Photos
+                        </button>
+                    </div>
+                    <div className="channel-videos-page__sort">
+                        <label htmlFor="sort">Sort by: </label>
+                        <select id="sort" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                            <option value="date-desc">Date (Newest)</option>
+                            <option value="date-asc">Date (Oldest)</option>
+                            <option value="title-asc">Title (A-Z)</option>
+                            <option value="title-desc">Title (Z-A)</option>
+                            <option value="duration-asc">Duration (Shortest)</option>
+                            <option value="duration-desc">Duration (Longest)</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             {videos.length > 0 ? (

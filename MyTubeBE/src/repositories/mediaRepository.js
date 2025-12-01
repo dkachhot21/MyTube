@@ -150,7 +150,7 @@ export async function fetchById(Id, userId) {
 }
 
 /* -------------------- GET ALL with pagination and sorting -------------------- */
-export async function fetchAll(userId, page = 1, limit = 20, sortBy = 'timestamp_taken', sortOrder = 'DESC') {
+export async function fetchAll(userId, page = 1, limit = 20, sortBy = 'timestamp_taken', sortOrder = 'DESC', filterType = 'all') {
     const offset = (page - 1) * limit;
 
     // Map frontend sort values to database columns
@@ -165,12 +165,19 @@ export async function fetchAll(userId, page = 1, limit = 20, sortBy = 'timestamp
     const column = sortColumnMap[sortBy] || 'm.timestamp_taken';
     const order = sortOrder.toUpperCase() === 'ASC' ? 'ASC' : 'DESC';
 
+    let filterClause = '';
+    if (filterType === 'video') {
+        filterClause = 'AND m.duration_ms > 0';
+    } else if (filterType === 'photo') {
+        filterClause = 'AND (m.duration_ms = 0 OR m.duration_ms IS NULL)';
+    }
+
     const result = await db.query(
         `
     SELECT m.*, a.album_name
     FROM media m
     LEFT JOIN albums a ON m.album_id = a.album_id AND a.user_id = m.user_id
-    WHERE m.user_id = $1
+    WHERE m.user_id = $1 ${filterClause}
     ORDER BY ${column} ${order}
     LIMIT $2 OFFSET $3
     `,
@@ -181,7 +188,7 @@ export async function fetchAll(userId, page = 1, limit = 20, sortBy = 'timestamp
 }
 
 /* -------------------- SEARCH: Album name -------------------- */
-export async function fetchByAlbum(album, userId, page = 1, limit = 20, sortBy = 'timestamp_taken', sortOrder = 'DESC') {
+export async function fetchByAlbum(album, userId, page = 1, limit = 20, sortBy = 'timestamp_taken', sortOrder = 'DESC', filterType = 'all') {
     const like = `%${album}%`;
     const offset = (page - 1) * limit;
 
@@ -197,12 +204,19 @@ export async function fetchByAlbum(album, userId, page = 1, limit = 20, sortBy =
     const column = sortColumnMap[sortBy] || 'm.timestamp_taken';
     const order = sortOrder.toUpperCase() === 'ASC' ? 'ASC' : 'DESC';
 
+    let filterClause = '';
+    if (filterType === 'video') {
+        filterClause = 'AND m.duration_ms > 0';
+    } else if (filterType === 'photo') {
+        filterClause = 'AND (m.duration_ms = 0 OR m.duration_ms IS NULL)';
+    }
+
     const result = await db.query(
         `
       SELECT m.*, a.album_name
       FROM media m
       JOIN albums a ON m.album_id = a.album_id AND a.user_id = m.user_id
-      WHERE a.album_name ILIKE $1 AND a.user_id = $2
+      WHERE a.album_name ILIKE $1 AND a.user_id = $2 ${filterClause}
       ORDER BY ${column} ${order}
       LIMIT $3 OFFSET $4
     `,

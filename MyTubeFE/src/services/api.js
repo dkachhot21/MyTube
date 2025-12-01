@@ -43,43 +43,17 @@ export const registerUser = async (username, email, password) => {
 };
 
 export const getCurrentUser = async () => {
-    const response = await fetch(`${API_BASE_URL}/auth/me`, {
-        headers: getHeaders()
-    });
-
-    if (!response.ok) {
-        throw new Error('Failed to get current user');
-    }
-
-    return await response.json();
-};
-
-export const getAllMedia = async (page = 1, limit = 20, sortBy = 'timestamp_taken', sortOrder = 'DESC') => {
     try {
-        const response = await fetch(`${API_BASE_URL}/media?page=${page}&limit=${limit}&sortBy=${sortBy}&sortOrder=${sortOrder}`, {
+        const response = await fetch(`${API_BASE_URL}/auth/me`, {
             headers: getHeaders()
         });
+
         if (!response.ok) {
-            throw new Error('Failed to fetch media');
+            throw new Error('Failed to fetch user details');
         }
         return await response.json();
     } catch (error) {
-        console.error('Error fetching media:', error);
-        return [];
-    }
-};
-
-export const getMediaById = async (id) => {
-    try {
-        const response = await fetch(`${API_BASE_URL}/media/search/id?id=${id}`, {
-            headers: getHeaders()
-        });
-        if (!response.ok) {
-            throw new Error('Failed to fetch media details');
-        }
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching media details:', error);
+        console.error('Error fetching user details:', error);
         return null;
     }
 };

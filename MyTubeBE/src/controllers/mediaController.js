@@ -18,7 +18,14 @@ export async function getAll(req, res) {
         const limit = parseInt(req.query.limit) || 20;
         const sortBy = req.query.sortBy || 'timestamp_taken';
         const sortOrder = req.query.sortOrder || 'DESC';
-        const result = await getAllService(userId, page, limit, sortBy, sortOrder);
+        const filterType = req.query.type || 'all';
+
+        // Note: getAllService needs to be updated to accept filterType, 
+        // OR we should be using mediaRepository directly if that was the plan.
+        // The previous plan updated mediaRepository.js, but mediaController seems to use mediaService.js.
+        // Let's check if mediaService just passes through to repository.
+        // For now, I will assume I need to pass it to the service.
+        const result = await getAllService(userId, page, limit, sortBy, sortOrder, filterType);
         return res.json(result);
     } catch (err) {
         console.error("Get all media error:", err);
@@ -118,8 +125,9 @@ export async function searchByAlbum(req, res) {
         const limit = parseInt(req.query.limit) || 20;
         const sortBy = req.query.sortBy || 'timestamp_taken';
         const sortOrder = req.query.sortOrder || 'DESC';
+        const filterType = req.query.type || 'all';
 
-        const result = await getByAlbum(album, userId, page, limit, sortBy, sortOrder);
+        const result = await getByAlbum(album, userId, page, limit, sortBy, sortOrder, filterType);
         return res.json(result);
     } catch (err) {
         console.error("Search album:", err);
