@@ -64,6 +64,36 @@ export const getStreamUrl = (id, quality = '1080p') => {
     return `${API_BASE_URL}/stream?id=${id}&quality=${quality}&token=${token}`;
 };
 
+export const getMediaById = async (id) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/media/search/id?id=${id}`, {
+            headers: getHeaders()
+        });
+        if (!response.ok) {
+            throw new Error('Failed to fetch media by id');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching media by id:', error);
+        return null;
+    }
+};
+
+export const getAllMedia = async (page = 1, limit = 20, sortBy = 'timestamp_taken', sortOrder = 'DESC', type = 'all') => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/media?page=${page}&limit=${limit}&sortBy=${sortBy}&sortOrder=${sortOrder}&type=${type}`, {
+            headers: getHeaders()
+        });
+        if (!response.ok) {
+            throw new Error('Failed to fetch media');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching media:', error);
+        return [];
+    }
+};
+
 export const getMediaByAlbum = async (albumName, page = 1, limit = 20, sortBy = 'timestamp_taken', sortOrder = 'DESC') => {
     try {
         const response = await fetch(`${API_BASE_URL}/media/search/album?album=${albumName}&page=${page}&limit=${limit}&sortBy=${sortBy}&sortOrder=${sortOrder}`, {

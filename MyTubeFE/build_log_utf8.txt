@@ -1,0 +1,64 @@
+﻿
+> frontend@0.0.0 build
+> vite build
+
+[36mvite v4.5.14 [32mbuilding for production...[36m[39m
+transforming...
+[32mΓ£ô[39m 69 modules transformed.
+node.exe : [1m[33m[plugin:vite:rep
+orter][39m[22m [33m
+At line:1 char:1
++ & "C:\Users\Observer\scoop\apps\nv
+m\current\nodejs\nodejs/node.exe" " 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSp 
+   ecified: ([1m[33m[plugi...[39  
+  m[22m [33m:String) [], Remote   
+ Exception
+    + FullyQualifiedErrorId : Nativ 
+   eCommandError
+ 
+(!) C:/Users/Observer/Documents/Code
+s/MyTube/MyTube_V2/MyTubeFE/src/serv
+ices/api.js is dynamically imported 
+by C:/Users/Observer/Documents/Codes
+/MyTube/MyTube_V2/MyTubeFE/src/pages
+/ManageAccountPage.jsx, C:/Users/Obs
+erver/Documents/Codes/MyTube/MyTube_
+V2/MyTubeFE/src/pages/PlayPage.jsx 
+but also statically imported by C:/U
+sers/Observer/Documents/Codes/MyTube
+/MyTube_V2/MyTubeFE/src/context/Auth
+Context.jsx, C:/Users/Observer/Docum
+ents/Codes/MyTube/MyTube_V2/MyTubeFE
+/src/pages/ChannelVideosPage.jsx, C:
+/Users/Observer/Documents/Codes/MyTu
+be/MyTube_V2/MyTubeFE/src/pages/Chan
+nelsPage.jsx, C:/Users/Observer/Docu
+ments/Codes/MyTube/MyTube_V2/MyTubeF
+E/src/pages/HistoryPage.jsx, C:/User
+s/Observer/Documents/Codes/MyTube/My
+Tube_V2/MyTubeFE/src/pages/HomePage.
+jsx, C:/Users/Observer/Documents/Cod
+es/MyTube/MyTube_V2/MyTubeFE/src/pag
+es/ManageAccountPage.jsx, C:/Users/O
+bserver/Documents/Codes/MyTube/MyTub
+e_V2/MyTubeFE/src/pages/PlayPage.jsx
+, C:/Users/Observer/Documents/Codes/
+MyTube/MyTube_V2/MyTubeFE/src/pages/
+SearchPage.jsx, C:/Users/Observer/Do
+cuments/Codes/MyTube/MyTube_V2/MyTub
+eFE/src/pages/StarVideosPage.jsx, C:
+/Users/Observer/Documents/Codes/MyTu
+be/MyTube_V2/MyTubeFE/src/pages/Star
+sPage.jsx, dynamic import will not 
+move module into another chunk.
+[39m
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                 [39m[1m[2m  1.23 kB[22m[1m[22m[2m Γöé gzip:  0.66 kB[22m
+[2mdist/[22m[35massets/index-2a70fed7.css  [39m[1m[2m 17.08 kB[22m[1m[22m[2m Γöé gzip:  3.54 kB[22m
+[2mdist/[22m[36massets/index-aac541a7.js   [39m[1m[2m237.71 kB[22m[1m[22m[2m Γöé gzip: 74.72 kB[22m
+[32mΓ£ô built in 2.31s[39m
