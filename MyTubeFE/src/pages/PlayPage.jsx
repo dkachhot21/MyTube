@@ -19,11 +19,12 @@ const PlayPage = () => {
     const fetchVideo = async () => {
       const data = await getMediaById(id);
       if (data) {
+        const isPhoto = !data.duration_ms || data.duration_ms === 0;
         setVideo({
           id: data.internal_id,
           title: data.title || data.file_name,
           description: 'No description available.',
-          src: getStreamUrl(data.internal_id, quality),
+          src: isPhoto ? `${data.url}=w1920-h1080` : getStreamUrl(data.internal_id, quality),
           channel: data.album_name || 'Unknown Channel',
           stars: data.stars || [],
           views: '0', // Placeholder
@@ -31,6 +32,7 @@ const PlayPage = () => {
           duration: formatDuration(Number(data.duration_ms)),
           season: data.season,
           episode: data.episode,
+          isPhoto: isPhoto,
         });
 
         // Fetch related videos
@@ -90,7 +92,7 @@ const PlayPage = () => {
   }, [id, quality]);
 
   useEffect(() => {
-    if (video && video.id) {
+    if (video && video.id && !video.isPhoto) {
       // Save initial position (0) to add to history immediately
       import('../services/api').then(({ savePlaybackPosition }) => {
         savePlaybackPosition(video.id, 0);
@@ -121,29 +123,45 @@ const PlayPage = () => {
     <div className="play-page">
       <div className="play-page__main">
         <div className="video-player">
-          <video
-            src={video.src}
-            controls
-            autoPlay
-            width="100%"
-            height="100%"
-            style={{ backgroundColor: 'black' }}
-          >
-            Your browser does not support the video tag.
-          </video>
-          <div className="quality-selector">
-            <label htmlFor="quality">Quality: </label>
-            <select
-              id="quality"
-              value={quality}
-              onChange={(e) => handleQualityChange(e.target.value)}
+          {video.isPhoto ? (
+            <img
+              src={video.src}
+              alt={video.title}
+              style={{
+                width: '100%',
+                height: 'auto',
+                maxHeight: '80vh',
+                objectFit: 'contain',
+                backgroundColor: 'black'
+              }}
+            />
+          ) : (
+            <video
+              src={video.src}
+              controls
+              autoPlay
+              width="100%"
+              height="100%"
+              style={{ backgroundColor: 'black' }}
             >
-              <option value="4k">4K</option>
-              <option value="1080p">1080p</option>
-              <option value="720p">720p</option>
-              <option value="360p">360p</option>
-            </select>
-          </div>
+              Your browser does not support the video tag.
+            </video>
+          )}
+          {!video.isPhoto && (
+            <div className="quality-selector">
+              <label htmlFor="quality">Quality: </label>
+              <select
+                id="quality"
+                value={quality}
+                onChange={(e) => handleQualityChange(e.target.value)}
+              >
+                <option value="4k">4K</option>
+                <option value="1080p">1080p</option>
+                <option value="720p">720p</option>
+                <option value="360p">360p</option>
+              </select>
+            </div>
+          )}
         </div>
         <div className="video-details">
           <h2>{video.title}</h2>
